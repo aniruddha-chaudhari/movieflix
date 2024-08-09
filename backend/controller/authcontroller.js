@@ -35,7 +35,7 @@ export async function signup(req, res) {
         const hashedpassword = await bcryptjs.hash(password, salt);
 
 
-        const PROFILE_PIC = ["assets\avatar1.png", "assets\avatar2.png", "assets\avatar3.png"];
+        const PROFILE_PIC = ["/avatar1.png", "/avatar2.png", "/avatar3.png"];
 
         const image = PROFILE_PIC[Math.floor(Math.random() * PROFILE_PIC.length)];
 
@@ -49,6 +49,7 @@ export async function signup(req, res) {
 
 
         generateTokenandsetcookie(newUser._id, res);
+        console.log("new user", newUser);
         await newUser.save();
         res.status(201).json({
             success: true, user: {

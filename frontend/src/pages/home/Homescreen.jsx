@@ -6,8 +6,10 @@ import Navbar from '../../components/Navbar';
 const Homescreen = () => {
   return (
     <div>
-      <h1>Welcome to the homepage</h1>
-      <Navbar />
+      <Navbar/>
+      <img src="/extraction.jpg" alt="Hero img" 
+      className='absolute top-0 left-0 w-full h-full object-cover -z-50'
+      />
     </div>
   )
 }
