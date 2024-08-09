@@ -1,13 +1,15 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthstore } from '../store/authUser'
 
 const Loginpage = () => {
+    const { login } = useAuthstore();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleLogin = (e) => {
         e.preventDefault()
-        console.log(email, password)
+        login({ email, password });
     }
 
     return (

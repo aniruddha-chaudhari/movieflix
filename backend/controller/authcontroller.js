@@ -75,7 +75,7 @@ export async function login(req, res) {
         }
 
         const user = await User.findOne({ email: email });
-        
+
         if (!user) {
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
@@ -90,7 +90,7 @@ export async function login(req, res) {
         res.status(200).json({
             success: true, user: { ...user._doc, password: "" }
         });
-}
+    }
 
     catch (error) {
         console.log("error in login", error);
@@ -106,5 +106,17 @@ export async function logout(req, res) {
     catch (error) {
         console.log("error in logout", error);
         res.status(500).json({ success: false, message: "Something went wrong" });
+    }
+}
+
+
+export async function authCheck(req, res) {
+    try {
+        console.log("authcheck", req.user);
+        res.status(200).json({ success: true, user: req.user });
+    } catch (error) {
+        console.log("error in authcheck", error);
+        res.status(500).json({ success: false, message: "Something went wrong" });
+        console.log(error);
     }
 }
