@@ -52,6 +52,7 @@ const { id } = req.params;
     try {
         const data = await fetchfromTMDB(`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`);
         res.json({ success: true, similar: data.results });
+        console.log(data);
     }
     catch (error) {
 

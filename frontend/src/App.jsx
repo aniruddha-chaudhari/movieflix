@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Homepage from './pages/home/Homepage'
 import Signuppage from './pages/Signuppage'
 import Loginpage from './pages/Loginpage'
+import WatchPage from './pages/WatchPage'
 import { Toaster } from 'react-hot-toast'
 import { useAuthstore } from './store/authUser'
 import { Loader } from 'lucide-react'
@@ -33,6 +34,7 @@ return (
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={!user? <Loginpage />:<Navigate to={'/'}/> } />
         <Route path="/signup" element={!user? <Signuppage />: <Navigate to={'/'}/>} />
+        <Route path='/watch/:id' element={user ? <WatchPage /> : <Navigate to={"/login"} />} />
       </Routes>
       <Toaster />
     </>
