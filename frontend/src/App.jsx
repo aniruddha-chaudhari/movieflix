@@ -7,6 +7,9 @@ import WatchPage from './pages/WatchPage'
 import { Toaster } from 'react-hot-toast'
 import { useAuthstore } from './store/authUser'
 import { Loader } from 'lucide-react'
+import SearchPage from './pages/SearchPage'
+import SearchHistorypage from './pages/SearchHistorypage'
+import SearchHistoryPage from './pages/SearchHistorypage'
 
 const App = () => {
   const { user, ischeckingAuth,authCheck } = useAuthstore();
@@ -35,6 +38,8 @@ return (
         <Route path="/login" element={!user? <Loginpage />:<Navigate to={'/'}/> } />
         <Route path="/signup" element={!user? <Signuppage />: <Navigate to={'/'}/>} />
         <Route path='/watch/:id' element={user ? <WatchPage /> : <Navigate to={"/login"} />} />
+        <Route path='/search' element={user ? <SearchPage /> : <Navigate to={"/login"} />} />
+        <Route path='/history' element={user ? <SearchHistoryPage/> : <Navigate to={"/login"} />} />
       </Routes>
       <Toaster />
     </>

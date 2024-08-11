@@ -49,7 +49,6 @@ export async function signup(req, res) {
 
 
         generateTokenandsetcookie(newUser._id, res);
-        console.log("new user", newUser);
         await newUser.save();
         res.status(201).json({
             success: true, user: {
@@ -63,7 +62,6 @@ export async function signup(req, res) {
 
     }
     catch (err) {
-        console.log("error in sifnup", err);
         res.status(500).json({ success: false, message: "Something went wrong" });
     }
 }
@@ -94,7 +92,6 @@ export async function login(req, res) {
     }
 
     catch (error) {
-        console.log("error in login", error);
         res.status(500).json({ success: false, message: "Something went wrong" });
     }
 }
@@ -105,7 +102,6 @@ export async function logout(req, res) {
         res.status(200).json({ success: true, message: "Logged out successfully" });
     }
     catch (error) {
-        console.log("error in logout", error);
         res.status(500).json({ success: false, message: "Something went wrong" });
     }
 }
@@ -115,8 +111,6 @@ export async function authCheck(req, res) {
     try {
         res.status(200).json({ success: true, user: req.user });
     } catch (error) {
-        console.log("error in authcheck", error);
         res.status(500).json({ success: false, message: "Something went wrong" });
-        console.log(error);
     }
 }
